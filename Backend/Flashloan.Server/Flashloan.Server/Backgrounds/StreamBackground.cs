@@ -7,7 +7,6 @@ namespace Flashloan.Server.Backgrounds
 {
     public class StreamBackground(IGrainFactory grainFactory, IOptions<DexConfiguration> dexConfigurationOptions) : BackgroundService
     {
-
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             await Task.Delay(5000);

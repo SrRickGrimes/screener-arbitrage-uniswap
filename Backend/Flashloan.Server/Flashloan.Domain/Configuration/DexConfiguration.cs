@@ -6,6 +6,8 @@
         public int UniSwapRouterVersion { get; set; }
         public List<AllowedMethod> AllowedMethods { get; set; } = [];
         public List<Pair> Pairs { get; set; } = [];
+
+        public decimal MinimumAcceptablePotentialProfit { get; set; } = 1.0m;
     }
 
     public class Pair
