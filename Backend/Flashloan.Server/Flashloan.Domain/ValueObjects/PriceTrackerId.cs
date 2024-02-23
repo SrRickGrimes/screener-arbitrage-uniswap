@@ -1,7 +1,11 @@
 ﻿namespace Flashloan.Domain.ValueObjects
 {
-    public struct PriceTrackerId(string Symbol,string DexName,string LiquidityPool)
+    public struct PriceTrackerId(string Symbol, string DexName, string LiquidityPool)
     {
+        public string Symbol { get; } = Symbol;
+        public string DexName { get; } = DexName;
+        public string LiquidityPool { get; } = LiquidityPool;
+
         public override readonly string ToString()
         {
             return $"{Symbol}_{DexName}_{LiquidityPool}";

@@ -29,4 +29,10 @@
     <ProjectReference Include="..\Flashloan.Infrastructure\Flashloan.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="liquidityPool.abi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

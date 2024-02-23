@@ -1,20 +1,17 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
-using Microsoft.AspNetCore.ResponseCompression;
+using Flashloan.Application;
+using Flashloan.Domain;
 using Flashloan.Infrastructure;
 using Flashloan.Server.Backgrounds;
-using Orleans.Hosting;
-using Orleans.Storage;
-using Orleans.Providers;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Orleans.Configuration;
-using Flashloan.Domain;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
-builder.Services.AddDomain();
+builder.Services.AddDomain(builder.Configuration);
+builder.Services.AddInfrastructure();
+builder.Services.AddApplication(builder.Configuration);
+
 builder.Host.UseOrleans(siloBuilder =>
 {
     siloBuilder.AddStreaming();
@@ -33,12 +30,18 @@ builder.Host.UseOrleans(siloBuilder =>
         configureOptions.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     });
 
+
     siloBuilder.AddAdoNetGrainStorage("PubSubStore", configureOptions =>
     {
         configureOptions.Invariant = "System.Data.SqlClient";
         configureOptions.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     });
 
+    siloBuilder.AddAdoNetGrainStorage("PairGapStore", configureOptions =>
+    {
+        configureOptions.Invariant = "System.Data.SqlClient";
+        configureOptions.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    });
     siloBuilder.AddAdoNetGrainStorageAsDefault();
 });
 // Add services to the container.

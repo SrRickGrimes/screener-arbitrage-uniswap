@@ -1,4 +1,5 @@
 ﻿using Flashloan.Domain.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -6,12 +7,9 @@ namespace Flashloan.Domain
 {
     public static class ServiceExtensions
     {
-        public static IServiceCollection AddDomain(this IServiceCollection services)
+        public static IServiceCollection AddDomain(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<DexConfiguration>(nameof(DexConfiguration), configure =>
-            {
-                configure.UniSwapRouterVersion = 2;
-            });
+            services.Configure<DexConfiguration>(configuration.GetSection(nameof(DexConfiguration)));
             return services;
         }
     }

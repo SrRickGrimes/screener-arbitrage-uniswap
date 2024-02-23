@@ -2,10 +2,9 @@
 
 namespace Flashloan.Application.Grains
 {
-    public interface IStreamProviderGrain:IGrainWithStringKey
+    public interface IStreamProviderGrain : IGrainWithStringKey
     {
         Task StartProducing();
 
-        Task StopProducing();
     }
 }
