@@ -19,3 +19,13 @@
 
 # Go workspace file
 go.work
+/Backend/Flashloan.Server/.vs
+/Backend/Flashloan.Server/Flashloan.Application/bin/Debug/net8.0
+/Backend/Flashloan.Server/Flashloan.Application/obj
+/Backend/Flashloan.Server/Flashloan.Domain/bin/Debug/net8.0
+/Backend/Flashloan.Server/Flashloan.Domain/obj
+/Backend/Flashloan.Server/Flashloan.Infrastructure/bin/Debug/net8.0
+/Backend/Flashloan.Server/Flashloan.Infrastructure/obj
+/Backend/Flashloan.Server/Flashloan.Server/.config
+/Backend/Flashloan.Server/Flashloan.Server/bin/Debug/net8.0
+/Backend/Flashloan.Server/Flashloan.Server/obj
