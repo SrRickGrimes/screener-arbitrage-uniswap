@@ -4,6 +4,7 @@ using Flashloan.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UniswapV2.Network.Ethereum.Configuration;
+using UniswapV2.Network.Ethereum.Interfaces;
 using UniswapV2.Network.Ethereum.Providers;
 
 namespace UniswapV2.Network.Ethereum
@@ -30,6 +31,7 @@ namespace UniswapV2.Network.Ethereum
             services.AddKeyedSingleton<IScreenerProvider, ScreenerProvider>(IUniswapV2.Name);
             services.AddSingleton<IScreenerProvider, ScreenerProvider>();
 
+            services.AddSingleton<IWeb3Service, Web3Service>();
             var section = configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration));
             services.Configure<UniswapV2EthereumNodeConfiguration>(configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration)));
 

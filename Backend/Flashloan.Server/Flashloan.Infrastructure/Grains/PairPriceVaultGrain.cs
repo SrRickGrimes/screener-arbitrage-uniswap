@@ -57,7 +57,7 @@ namespace Flashloan.Infrastructure.Grains
 
             await _persistentState.WriteStateAsync();
             _logger.LogInformation("Price for {Symbol} was updated to {Price} for {DexName}", this.GetPrimaryKeyString(), Price, dexName);
-            await  CalculateGapAsync();
+            await CalculateGapAsync();
 
         }
 
@@ -75,7 +75,7 @@ namespace Flashloan.Infrastructure.Grains
                 return;
             }
             var symbolInfo = chainMetadataProvider.GetConfiguration().Pairs.First(x => x.Symbol == pairPriceVaultId.Symbol);
-            var dexes = new List<(DexDto DexA,DexDto DexB, decimal gapPercentage)>();
+            var dexes = new List<(DexDto DexA, DexDto DexB, decimal gapPercentage)>();
             for (int i = 0; i < prices.Count; i++)
             {
                 for (int j = i + 1; j < prices.Count; j++)
@@ -85,21 +85,21 @@ namespace Flashloan.Infrastructure.Grains
 
                     var gapPercentage = Math.Abs(price1.Price - price2.Price) / ((price1.Price + price2.Price) / 2) * 100;
 
-                    if(gapPercentage >= chainMetadataProvider.GetConfiguration().MinimumAcceptablePotentialProfit)
+                    if (gapPercentage >= chainMetadataProvider.GetConfiguration().MinimumAcceptablePotentialProfit)
                     {
-                       
+
                         var oracleGrain = _grainFactory.GetGrain<IProfitOracleGrain>(oracleId.ToString());
                         var estimatorProvider = _serviceProvider.GetRequiredKeyedService<IGasEstimatorProvider>(pairPriceVaultId.Key);
                         // we need only to pass the name of the dexes and get the info from the configuration
                         // we need to create a gasEstimator provider and pass the potential gas 
                         // we need to create a variable with the amount to trade 
                         var estimatedGas = await estimatorProvider.EstimateGasAsync(this.GetPrimaryKeyString(), price1.DexName!, price2.DexName!);
-                        
-                        var result= await oracleGrain.GetProfitabilityAsync(
+
+                        var result = await oracleGrain.GetProfitabilityAsync(
                             this.GetPrimaryKeyString(),
-                            price1.DexName!, 
+                            price1.DexName!,
                             price2.DexName!,
-                            chainMetadataProvider.GetConfiguration().TradeAmountEth, 
+                            chainMetadataProvider.GetConfiguration().TradeAmountEth,
                             estimatedGas);
 
                         if (result.ProfitabilityPercentage > 0)
@@ -115,21 +115,22 @@ namespace Flashloan.Infrastructure.Grains
                         _logger.LogInformation($"Symbol: {this.GetPrimaryKeyString()}, {price1.DexName} y {price2.DexName} gap is: {gapPercentage:F2}%");
                     }
                     dexes.Add(new(
-                        new DexDto() 
-                        { 
-                            DexName=price1.DexName!, 
-                            LiquidityPool=symbolInfo.Dexes.First(x=> x.DexName== price1.DexName).LiquidityPool,
-                            Price=price1.Price},
-                        new DexDto() 
-                        { 
-                            DexName=price2.DexName!,
-                            LiquidityPool= symbolInfo.Dexes.First(x => x.DexName == price2.DexName).LiquidityPool, 
-                            Price=price2.Price
-                        }, 
+                        new DexDto()
+                        {
+                            DexName = price1.DexName!,
+                            LiquidityPool = symbolInfo.Dexes.First(x => x.DexName == price1.DexName).LiquidityPool,
+                            Price = price1.Price
+                        },
+                        new DexDto()
+                        {
+                            DexName = price2.DexName!,
+                            LiquidityPool = symbolInfo.Dexes.First(x => x.DexName == price2.DexName).LiquidityPool,
+                            Price = price2.Price
+                        },
                         gapPercentage
-                        )); 
-                    
-                    
+                        ));
+
+
                 }
             }
 
@@ -139,6 +140,8 @@ namespace Flashloan.Infrastructure.Grains
                 Symbol = symbolInfo.Symbol,
                 Dexes = dexes
             });
+            dexes = null;
+            prices = null;
         }
 
     }

@@ -1,6 +1,5 @@
 ﻿using Flashloan.Application.Interfaces;
 using Flashloan.Domain.ValueObjects;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Nethereum.Web3;
 using UniswapV2.Network.Ethereum.Configuration;
@@ -8,7 +7,7 @@ using UniswapV2.Network.Ethereum.Models;
 
 namespace UniswapV2.Network.Ethereum.Providers
 {
-    internal class PriceProvider(IOptions<UniswapV2EthereumNodeConfiguration> nodeConfigurationOptions, ILogger<PriceProvider> logger) : IPriceProvider
+    internal class PriceProvider(IOptions<UniswapV2EthereumNodeConfiguration> nodeConfigurationOptions) : IPriceProvider
     {
         public string Name => IUniswapV2.Name;
 
