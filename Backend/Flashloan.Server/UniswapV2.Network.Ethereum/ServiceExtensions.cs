@@ -27,6 +27,9 @@ namespace UniswapV2.Network.Ethereum
             services.AddKeyedTransient<IChainNetworkMetadataProvider, ChainNetworkMetadataProvider>(IUniswapV2.Name);
             services.AddTransient<IChainNetworkMetadataProvider, ChainNetworkMetadataProvider>();
 
+            services.AddKeyedSingleton<IScreenerProvider, ScreenerProvider>(IUniswapV2.Name);
+            services.AddSingleton<IScreenerProvider, ScreenerProvider>();
+
             var section = configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration));
             services.Configure<UniswapV2EthereumNodeConfiguration>(configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration)));
 

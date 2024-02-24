@@ -1,4 +1,5 @@
-﻿using Flashloan.Application.Grains;
+﻿using Flashloan.Application.Dtos;
+using Flashloan.Application.Grains;
 using Flashloan.Application.Interfaces;
 using Flashloan.Application.Models;
 using Flashloan.Domain.Interfaces;
@@ -6,7 +7,6 @@ using Flashloan.Domain.ValueObjects;
 using Flashloan.Infrastructure.States;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Orleans;
 using Orleans.Runtime;
 
@@ -61,20 +61,21 @@ namespace Flashloan.Infrastructure.Grains
 
         }
 
+
         private async Task CalculateGapAsync()
         {
             var prices = _persistentState.State.Prices;
             var pairPriceVaultId = PairPriceVaultId.FromStringKey(this.GetPrimaryKeyString());
             var oracleId = new OracleId(pairPriceVaultId.Key);
             var chainMetadataProvider = _serviceProvider.GetRequiredKeyedService<IChainNetworkMetadataProvider>(pairPriceVaultId.Key);
-
+            var screener = _serviceProvider.GetRequiredKeyedService<IScreenerProvider>(pairPriceVaultId.Key);
             if (prices.Count < 2)
             {
                 _logger.LogInformation("No hay suficientes DEX para calcular el gap.");
                 return;
             }
-
-           
+            var symbolInfo = chainMetadataProvider.GetConfiguration().Pairs.First(x => x.Symbol == pairPriceVaultId.Symbol);
+            var dexes = new List<(DexDto DexA,DexDto DexB)>();
             for (int i = 0; i < prices.Count; i++)
             {
                 for (int j = i + 1; j < prices.Count; j++)
@@ -113,8 +114,29 @@ namespace Flashloan.Infrastructure.Grains
                     {
                         _logger.LogInformation($"Symbol: {this.GetPrimaryKeyString()}, {price1.DexName} y {price2.DexName} gap is: {gapPercentage:F2}%");
                     }
+                    dexes.Add(new(
+                        new DexDto() 
+                        { 
+                            DexName=price1.DexName!, 
+                            LiquidityPool=symbolInfo.Dexes.First(x=> x.DexName== price1.DexName).LiquidityPool,
+                            Price=price1.Price},
+                        new DexDto() 
+                        { 
+                            DexName=price2.DexName!,
+                            LiquidityPool= symbolInfo.Dexes.First(x => x.DexName == price2.DexName).LiquidityPool, 
+                            Price=price2.Price
+                        })); 
+                    
+                    
                 }
             }
+
+            await screener.UpdatePriceAsync(new PairDto
+            {
+                ContractAddress = symbolInfo.ContractAddress,
+                Symbol = symbolInfo.Symbol,
+                Dexes = dexes
+            });
         }
 
     }
