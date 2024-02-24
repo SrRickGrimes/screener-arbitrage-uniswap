@@ -1,6 +1,7 @@
-﻿using Flashloan.Application.Configuration;
-using Flashloan.Application.Grains;
+﻿using Flashloan.Application.Grains;
+using Flashloan.Domain.Interfaces;
 using Flashloan.Domain.ValueObjects;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Nethereum.JsonRpc.WebSocketStreamingClient;
@@ -11,7 +12,7 @@ using Orleans.Streams;
 
 namespace Flashloan.Infrastructure.Grains
 {
-    public class StreamProviderGrain(IOptions<NodeConfiguration> nodeConfigurationOptions, ILogger<NodeConfiguration> logger) : Grain, IStreamProviderGrain
+    public class StreamProviderGrain(IServiceProvider serviceProvider) : Grain, IStreamProviderGrain
     {
         public async Task StartProducing()
         {
@@ -26,54 +27,21 @@ namespace Flashloan.Infrastructure.Grains
         {
             var streamProducerId = StreamProducerId.FromStringKey(key);
             var streamProvider = this.GetStreamProvider(streamProducerId.StreamProviderName);
-            var publisherId = new StreamPublisherId(streamProducerId.ExchangeName, streamProducerId.StreamProviderName);
+            var publisherId = new StreamPublisherId(streamProducerId.Key, streamProducerId.ExchangeName, streamProducerId.StreamProviderName);
             return streamProvider.GetStream<string>(streamProducerId.StreamProviderName, publisherId.ToString());
         }
 
         private async Task StartStream(IAsyncStream<string> stream)
         {
+            var streamProducerId = StreamProducerId.FromStringKey(this.GetPrimaryKeyString());
+            var provider = serviceProvider.GetRequiredKeyedService<IChainNetworkStreamProvider>(streamProducerId.Key);
 
-            var client = new StreamingWebSocketClient(nodeConfigurationOptions.Value.WebSocketUrl);
-            // create the subscription
-            // (it won't start receiving data until Subscribe is called)
-            var subscription = new EthNewBlockHeadersObservableSubscription(client);
 
-            // attach a handler for when the subscription is first created (optional)
-            // this will occur once after Subscribe has been called
-            subscription.GetSubscribeResponseAsObservable().Subscribe(subscriptionId =>
-                Console.WriteLine("Block Header subscription Id: " + subscriptionId));
-
-            DateTime? lastBlockNotification = null;
-            double secondsSinceLastBlock = 0;
-
-            // attach a handler for each block
-            // put your logic here
-            subscription.GetSubscriptionDataResponsesAsObservable().Subscribe(async block =>
+            var chainStream =await provider.GetStream();
+            chainStream.Subscribe(async block =>
             {
-                secondsSinceLastBlock = (lastBlockNotification == null) ? 0 : (int)DateTime.Now.Subtract(lastBlockNotification.Value).TotalSeconds;
-                lastBlockNotification = DateTime.Now;
-                var utcTimestamp = DateTimeOffset.FromUnixTimeSeconds((long)block.Timestamp.Value);
-                logger.LogInformation("New Block. Number: {Number}, Timestamp UTC: {UtcTimestamp}, Seconds since last block received: {SecondsSinceLastBlock}", block.Number.Value, JsonConvert.SerializeObject(utcTimestamp), secondsSinceLastBlock);
-                await stream.OnNextAsync($"New Block. Number: {block.Number.Value}, Timestamp UTC: {JsonConvert.SerializeObject(utcTimestamp)}, Seconds since last block received: {secondsSinceLastBlock} ");
+                await stream.OnNextAsync($"{streamProducerId.Key} : {block}");
             });
-
-
-            // handle unsubscription
-            // optional - but may be important depending on your use case
-            subscription.GetUnsubscribeResponseAsObservable().Subscribe(response =>
-            {
-                Console.WriteLine("Block Header unsubscribe result: " + response);
-            });
-
-            // open the websocket connection
-            await client.StartAsync().ConfigureAwait(false);
-
-            // start the subscription
-            // this will only block long enough to register the subscription with the client
-            // once running - it won't block whilst waiting for blocks
-            // blocks will be delivered to our handler on another thread
-            await subscription.SubscribeAsync();
-
         }
     }
 }

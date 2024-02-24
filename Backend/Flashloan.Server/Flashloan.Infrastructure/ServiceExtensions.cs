@@ -1,6 +1,4 @@
-﻿using Flashloan.Application.Interfaces;
-using Flashloan.Infrastructure.Services;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Flashloan.Infrastructure
 {
@@ -8,8 +6,6 @@ namespace Flashloan.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddTransient<IPriceProvider, PriceProvider>();
-            services.AddTransient<IGasEstimatorProvider, GasEstimatorProvider>();
             return services;
         }
     }

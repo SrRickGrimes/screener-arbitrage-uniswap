@@ -2,7 +2,9 @@
 using Flashloan.Application.Interfaces;
 using Flashloan.Application.Models;
 using Flashloan.Domain.Configuration;
+using Flashloan.Domain.ValueObjects;
 using Flashloan.Infrastructure.States;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Orleans;
@@ -16,21 +18,21 @@ namespace Flashloan.Infrastructure.Grains
         private readonly ILogger<PairPriceVaultGrain> _logger;
         private readonly IGrainFactory _grainFactory;
         private readonly IOptions<DexConfiguration> _dexConfigurationOptions;
-        private readonly IGasEstimatorProvider _gasEstimatorProvider;
+        private readonly IServiceProvider _serviceProvider;
 
         public PairPriceVaultGrain(
             [PersistentState("PairGapStore")] IPersistentState<PairGapState> persistentState,
             ILogger<PairPriceVaultGrain> logger,
             IGrainFactory grainFactory,
             IOptions<DexConfiguration> dexConfigurationOptions,
-            IGasEstimatorProvider gasEstimatorProvider
+            IServiceProvider serviceProvider
             )
         {
             _persistentState = persistentState;
             _logger = logger;
             _grainFactory = grainFactory;
             _dexConfigurationOptions = dexConfigurationOptions;
-            _gasEstimatorProvider = gasEstimatorProvider;
+            _serviceProvider = serviceProvider;
         }
 
         public Task<List<PairPrice>> GetPairPricesAsync()
@@ -65,7 +67,8 @@ namespace Flashloan.Infrastructure.Grains
         private async Task CalculateGapAsync()
         {
             var prices = _persistentState.State.Prices;
-
+            var pairPriceVaultId = PairPriceVaultId.FromStringKey(this.GetPrimaryKeyString());
+            var oracleId = new OracleId(pairPriceVaultId.Key);
 
             if (prices.Count < 2)
             {
@@ -85,11 +88,13 @@ namespace Flashloan.Infrastructure.Grains
 
                     if(gapPercentage >= _dexConfigurationOptions.Value.MinimumAcceptablePotentialProfit)
                     {
-                        var oracleGrain = _grainFactory.GetGrain<IProfitOracleGrain>(Guid.NewGuid().ToString());
+                       
+                        var oracleGrain = _grainFactory.GetGrain<IProfitOracleGrain>(oracleId.ToString());
+                        var estimatorProvider = _serviceProvider.GetRequiredKeyedService<IGasEstimatorProvider>(pairPriceVaultId.Key);
                         // we need only to pass the name of the dexes and get the info from the configuration
                         // we need to create a gasEstimator provider and pass the potential gas 
                         // we need to create a variable with the amount to trade 
-                        var estimatedGas = await _gasEstimatorProvider.EstimateGasAsync(this.GetPrimaryKeyString(), price1.DexName!, price2.DexName!);
+                        var estimatedGas = await estimatorProvider.EstimateGasAsync(this.GetPrimaryKeyString(), price1.DexName!, price2.DexName!);
                         
                         var result= await oracleGrain.GetProfitabilityAsync(
                             this.GetPrimaryKeyString(),

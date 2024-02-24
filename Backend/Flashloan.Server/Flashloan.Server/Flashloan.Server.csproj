@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Flashloan.Infrastructure\Flashloan.Infrastructure.csproj" />
+    <ProjectReference Include="..\UniswapV2.Network.Ethereum\UniswapV2.Network.Ethereum.csproj" />
   </ItemGroup>
 
   <ItemGroup>

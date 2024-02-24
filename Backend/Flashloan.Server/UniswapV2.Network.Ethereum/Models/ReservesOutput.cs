@@ -1,7 +1,7 @@
 ﻿using Nethereum.ABI.FunctionEncoding.Attributes;
 using System.Numerics;
 
-namespace Flashloan.Infrastructure.Models
+namespace UniswapV2.Network.Ethereum.Models
 {
     [FunctionOutput]
     public class ReservesOutput

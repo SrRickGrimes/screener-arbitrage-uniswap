@@ -1,0 +1,228 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj": {}
+  },
+  "projects": {
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj",
+        "projectName": "Flashloan.Application",
+        "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj",
+        "packagesPath": "C:\\Users\\ricar\\.nuget\\packages\\",
+        "outputPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ricar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
+                "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Orleans.CodeGenerator": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Orleans.Core": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj",
+        "projectName": "Flashloan.Domain",
+        "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj",
+        "packagesPath": "C:\\Users\\ricar\\.nuget\\packages\\",
+        "outputPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ricar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj",
+        "projectName": "UniswapV2.Network.Ethereum",
+        "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj",
+        "packagesPath": "C:\\Users\\ricar\\.nuget\\packages\\",
+        "outputPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ricar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj": {
+                "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj"
+              },
+              "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
+                "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Nethereum.JsonRpc.WebSocketClient": {
+              "target": "Package",
+              "version": "[4.19.0, )"
+            },
+            "Nethereum.Parity.Reactive": {
+              "target": "Package",
+              "version": "[4.19.0, )"
+            },
+            "Nethereum.RPC.Reactive": {
+              "target": "Package",
+              "version": "[4.19.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
