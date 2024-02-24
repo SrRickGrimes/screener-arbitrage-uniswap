@@ -75,7 +75,7 @@ namespace Flashloan.Infrastructure.Grains
                 return;
             }
             var symbolInfo = chainMetadataProvider.GetConfiguration().Pairs.First(x => x.Symbol == pairPriceVaultId.Symbol);
-            var dexes = new List<(DexDto DexA,DexDto DexB)>();
+            var dexes = new List<(DexDto DexA,DexDto DexB, decimal gapPercentage)>();
             for (int i = 0; i < prices.Count; i++)
             {
                 for (int j = i + 1; j < prices.Count; j++)
@@ -125,7 +125,9 @@ namespace Flashloan.Infrastructure.Grains
                             DexName=price2.DexName!,
                             LiquidityPool= symbolInfo.Dexes.First(x => x.DexName == price2.DexName).LiquidityPool, 
                             Price=price2.Price
-                        })); 
+                        }, 
+                        gapPercentage
+                        )); 
                     
                     
                 }

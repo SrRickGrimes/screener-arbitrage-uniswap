@@ -11,7 +11,7 @@ namespace Flashloan.Application.Dtos
         public required string ContractAddress { get; set; }
 
         [Id(2)]
-        public List<(DexDto DexA, DexDto DexB)> Dexes { get; set; } = [];
+        public List<(DexDto DexA, DexDto DexB, decimal gapPercentage)> Dexes { get; set; } = [];
     }
 
     [GenerateSerializer]

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UniswapV2.Network.Ethereum")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+daed4b62270bb1662f989319f77812373755d60c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ec0579db1ccad485460b364903d1a0bcfd44096")]
 [assembly: System.Reflection.AssemblyProductAttribute("UniswapV2.Network.Ethereum")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UniswapV2.Network.Ethereum")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
