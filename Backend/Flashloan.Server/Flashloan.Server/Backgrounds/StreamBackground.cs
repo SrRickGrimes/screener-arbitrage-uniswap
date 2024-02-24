@@ -15,10 +15,13 @@ namespace Flashloan.Server.Backgrounds
                 var streamProducer = grainFactory.GetGrain<IStreamProviderGrain>(new StreamProducerId(streamProvider.Name, "RouterSwap", "StreamProvider").ToString());
                 await streamProducer.StartProducing();
                 var metadataProvider = serviceProvider.GetRequiredKeyedService<IChainNetworkMetadataProvider>(streamProvider.Name);
-                foreach (var item in metadataProvider.GetConfiguration().Pairs)
+                foreach (var symbol in metadataProvider.GetConfiguration().Pairs)
                 {
-                    var priceTrackerGrain = grainFactory.GetGrain<IPairPriceTrackerGrain>(new PriceTrackerId(streamProvider.Name, item.Symbol, item.DexName, item.LiquidityPool).ToString());
-                    await priceTrackerGrain.StartTrackingAsync();
+                    foreach (var dex in symbol.Dexes)
+                    {
+                        var priceTrackerGrain = grainFactory.GetGrain<IPairPriceTrackerGrain>(new PriceTrackerId(streamProvider.Name, symbol.Symbol, dex.DexName, dex.LiquidityPool).ToString());
+                        await priceTrackerGrain.StartTrackingAsync();
+                    }
                 }
             }
            
