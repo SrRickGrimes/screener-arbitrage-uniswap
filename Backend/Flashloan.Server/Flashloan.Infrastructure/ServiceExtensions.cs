@@ -9,7 +9,7 @@ namespace Flashloan.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<IPriceProvider, PriceProvider>();
-
+            services.AddTransient<IGasEstimatorProvider, GasEstimatorProvider>();
             return services;
         }
     }

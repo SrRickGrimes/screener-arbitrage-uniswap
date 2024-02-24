@@ -6,7 +6,7 @@ namespace Flashloan.Infrastructure.Grains
 {
     public class ProfitOracleGrain : Grain, IProfitOracleGrain
     {
-        public Task<ProfitabilityResult> GetProfitabilityAsync(string routerA, string routerB, string tokenIn, string tokenOut, decimal amountIn, decimal estimatedGasCostWei)
+        public Task<ProfitabilityResult> GetProfitabilityAsync(string symbol,string routerA, string routerB, decimal amountIn, decimal estimatedGasCostWei)
         {
             var random = new Random();
             var amountOutA = amountIn * (decimal)((random.NextDouble() * 0.95) + 1);

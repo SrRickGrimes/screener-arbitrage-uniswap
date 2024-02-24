@@ -6,11 +6,9 @@ namespace Flashloan.Application.Grains
 {
     public interface IProfitOracleGrain:IGrainWithStringKey
     {
-        public Task<ProfitabilityResult> GetProfitabilityAsync(
+        public Task<ProfitabilityResult> GetProfitabilityAsync(string symbol,
             string routerA,
             string routerB,
-            string tokenIn,
-            string tokenOut,
             decimal amountIn,
             decimal estimatedGasCostWei);
     }

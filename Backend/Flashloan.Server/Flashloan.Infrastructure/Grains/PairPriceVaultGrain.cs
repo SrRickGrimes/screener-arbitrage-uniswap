@@ -1,4 +1,5 @@
 ﻿using Flashloan.Application.Grains;
+using Flashloan.Application.Interfaces;
 using Flashloan.Application.Models;
 using Flashloan.Domain.Configuration;
 using Flashloan.Infrastructure.States;
@@ -15,18 +16,21 @@ namespace Flashloan.Infrastructure.Grains
         private readonly ILogger<PairPriceVaultGrain> _logger;
         private readonly IGrainFactory _grainFactory;
         private readonly IOptions<DexConfiguration> _dexConfigurationOptions;
+        private readonly IGasEstimatorProvider _gasEstimatorProvider;
 
         public PairPriceVaultGrain(
             [PersistentState("PairGapStore")] IPersistentState<PairGapState> persistentState,
             ILogger<PairPriceVaultGrain> logger,
             IGrainFactory grainFactory,
-            IOptions<DexConfiguration> dexConfigurationOptions
+            IOptions<DexConfiguration> dexConfigurationOptions,
+            IGasEstimatorProvider gasEstimatorProvider
             )
         {
             _persistentState = persistentState;
             _logger = logger;
             _grainFactory = grainFactory;
             _dexConfigurationOptions = dexConfigurationOptions;
+            _gasEstimatorProvider = gasEstimatorProvider;
         }
 
         public Task<List<PairPrice>> GetPairPricesAsync()
@@ -85,8 +89,15 @@ namespace Flashloan.Infrastructure.Grains
                         // we need only to pass the name of the dexes and get the info from the configuration
                         // we need to create a gasEstimator provider and pass the potential gas 
                         // we need to create a variable with the amount to trade 
+                        var estimatedGas = await _gasEstimatorProvider.EstimateGasAsync(this.GetPrimaryKeyString(), price1.DexName!, price2.DexName!);
+                        
+                        var result= await oracleGrain.GetProfitabilityAsync(
+                            this.GetPrimaryKeyString(),
+                            price1.DexName!, 
+                            price2.DexName!,
+                            _dexConfigurationOptions.Value.TradeAmountEth, 
+                            estimatedGas);
 
-                        var result= await oracleGrain.GetProfitabilityAsync(price1.DexName!, price2.DexName!,"","",100,0.01m);
                         if (result.ProfitabilityPercentage > 0)
                         {
                             //if it is profitable we need to call other grain to execute the arbitrage
