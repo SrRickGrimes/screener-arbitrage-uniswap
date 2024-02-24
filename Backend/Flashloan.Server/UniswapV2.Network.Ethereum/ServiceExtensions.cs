@@ -18,12 +18,14 @@ namespace UniswapV2.Network.Ethereum
             services.AddKeyedTransient<IPriceProvider, PriceProvider>(IUniswapV2.Name);
             services.AddTransient<IPriceProvider, PriceProvider>();
 
-
             services.AddKeyedTransient<IGasEstimatorProvider, GasEstimatorProvider>(IUniswapV2.Name);
             services.AddTransient<IGasEstimatorProvider, GasEstimatorProvider>();
 
             services.AddKeyedTransient<IOracleProvider, OracleProvider>(IUniswapV2.Name);
             services.AddTransient<IOracleProvider, OracleProvider>();
+
+            services.AddKeyedTransient<IChainNetworkMetadataProvider, ChainNetworkMetadataProvider>(IUniswapV2.Name);
+            services.AddTransient<IChainNetworkMetadataProvider, ChainNetworkMetadataProvider>();
 
             var section = configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration));
             services.Configure<UniswapV2EthereumNodeConfiguration>(configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration)));

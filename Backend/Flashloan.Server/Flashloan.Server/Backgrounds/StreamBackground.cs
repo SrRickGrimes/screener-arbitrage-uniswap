@@ -1,12 +1,10 @@
 ﻿using Flashloan.Application.Grains;
-using Flashloan.Domain.Configuration;
 using Flashloan.Domain.Interfaces;
 using Flashloan.Domain.ValueObjects;
-using Microsoft.Extensions.Options;
 
 namespace Flashloan.Server.Backgrounds
 {
-    public class StreamBackground(IGrainFactory grainFactory, IOptions<DexConfiguration> dexConfigurationOptions, IServiceProvider serviceProvider) : BackgroundService
+    public class StreamBackground(IGrainFactory grainFactory,  IServiceProvider serviceProvider) : BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -16,8 +14,8 @@ namespace Flashloan.Server.Backgrounds
             {
                 var streamProducer = grainFactory.GetGrain<IStreamProviderGrain>(new StreamProducerId(streamProvider.Name, "RouterSwap", "StreamProvider").ToString());
                 await streamProducer.StartProducing();
-
-                foreach (var item in dexConfigurationOptions.Value.Pairs)
+                var metadataProvider = serviceProvider.GetRequiredKeyedService<IChainNetworkMetadataProvider>(streamProvider.Name);
+                foreach (var item in metadataProvider.GetConfiguration().Pairs)
                 {
                     var priceTrackerGrain = grainFactory.GetGrain<IPairPriceTrackerGrain>(new PriceTrackerId(streamProvider.Name, item.Symbol, item.DexName, item.LiquidityPool).ToString());
                     await priceTrackerGrain.StartTrackingAsync();

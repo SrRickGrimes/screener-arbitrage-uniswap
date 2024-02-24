@@ -1,7 +1,7 @@
 ﻿using Flashloan.Application.Grains;
 using Flashloan.Application.Interfaces;
 using Flashloan.Application.Models;
-using Flashloan.Domain.Configuration;
+using Flashloan.Domain.Interfaces;
 using Flashloan.Domain.ValueObjects;
 using Flashloan.Infrastructure.States;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,21 +17,18 @@ namespace Flashloan.Infrastructure.Grains
         private readonly IPersistentState<PairGapState> _persistentState;
         private readonly ILogger<PairPriceVaultGrain> _logger;
         private readonly IGrainFactory _grainFactory;
-        private readonly IOptions<DexConfiguration> _dexConfigurationOptions;
         private readonly IServiceProvider _serviceProvider;
 
         public PairPriceVaultGrain(
             [PersistentState("PairGapStore")] IPersistentState<PairGapState> persistentState,
             ILogger<PairPriceVaultGrain> logger,
             IGrainFactory grainFactory,
-            IOptions<DexConfiguration> dexConfigurationOptions,
             IServiceProvider serviceProvider
             )
         {
             _persistentState = persistentState;
             _logger = logger;
             _grainFactory = grainFactory;
-            _dexConfigurationOptions = dexConfigurationOptions;
             _serviceProvider = serviceProvider;
         }
 
@@ -69,6 +66,7 @@ namespace Flashloan.Infrastructure.Grains
             var prices = _persistentState.State.Prices;
             var pairPriceVaultId = PairPriceVaultId.FromStringKey(this.GetPrimaryKeyString());
             var oracleId = new OracleId(pairPriceVaultId.Key);
+            var chainMetadataProvider = _serviceProvider.GetRequiredKeyedService<IChainNetworkMetadataProvider>(pairPriceVaultId.Key);
 
             if (prices.Count < 2)
             {
@@ -86,7 +84,7 @@ namespace Flashloan.Infrastructure.Grains
 
                     var gapPercentage = Math.Abs(price1.Price - price2.Price) / ((price1.Price + price2.Price) / 2) * 100;
 
-                    if(gapPercentage >= _dexConfigurationOptions.Value.MinimumAcceptablePotentialProfit)
+                    if(gapPercentage >= chainMetadataProvider.GetConfiguration().MinimumAcceptablePotentialProfit)
                     {
                        
                         var oracleGrain = _grainFactory.GetGrain<IProfitOracleGrain>(oracleId.ToString());
@@ -100,7 +98,7 @@ namespace Flashloan.Infrastructure.Grains
                             this.GetPrimaryKeyString(),
                             price1.DexName!, 
                             price2.DexName!,
-                            _dexConfigurationOptions.Value.TradeAmountEth, 
+                            chainMetadataProvider.GetConfiguration().TradeAmountEth, 
                             estimatedGas);
 
                         if (result.ProfitabilityPercentage > 0)
