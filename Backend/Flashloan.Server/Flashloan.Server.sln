@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flashloan.Application", "Fl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flashloan.Domain", "Flashloan.Domain\Flashloan.Domain.csproj", "{774B4ED4-4F90-40FB-BEDB-02401CC3AE1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniswapV2.Network.Ethereum", "UniswapV2.Network.Ethereum\UniswapV2.Network.Ethereum.csproj", "{0B11E7BA-4A3E-483F-833C-336297B22788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniswapV2.Network.Ethereum", "UniswapV2.Network.Ethereum\UniswapV2.Network.Ethereum.csproj", "{0B11E7BA-4A3E-483F-833C-336297B22788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
