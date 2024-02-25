@@ -22,15 +22,42 @@ import type {
 } from "../common";
 
 export interface IUniswapV2RouterInterface extends Interface {
-  getFunction(nameOrSignature: "getAmountsOut"): FunctionFragment;
+  getFunction(
+    nameOrSignature:
+      | "getAmountsIn"
+      | "getAmountsOut"
+      | "swapExactTokensForTokens"
+  ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "getAmountsIn",
+    values: [BigNumberish, AddressLike[]]
+  ): string;
   encodeFunctionData(
     functionFragment: "getAmountsOut",
     values: [BigNumberish, AddressLike[]]
   ): string;
+  encodeFunctionData(
+    functionFragment: "swapExactTokensForTokens",
+    values: [
+      BigNumberish,
+      BigNumberish,
+      AddressLike[],
+      AddressLike,
+      BigNumberish
+    ]
+  ): string;
 
   decodeFunctionResult(
+    functionFragment: "getAmountsIn",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "getAmountsOut",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "swapExactTokensForTokens",
     data: BytesLike
   ): Result;
 }
@@ -78,10 +105,28 @@ export interface IUniswapV2Router extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
+  getAmountsIn: TypedContractMethod<
+    [amountOut: BigNumberish, path: AddressLike[]],
+    [bigint[]],
+    "view"
+  >;
+
   getAmountsOut: TypedContractMethod<
     [amountIn: BigNumberish, path: AddressLike[]],
     [bigint[]],
     "view"
+  >;
+
+  swapExactTokensForTokens: TypedContractMethod<
+    [
+      amountIn: BigNumberish,
+      amountOutMin: BigNumberish,
+      path: AddressLike[],
+      to: AddressLike,
+      deadline: BigNumberish
+    ],
+    [bigint[]],
+    "nonpayable"
   >;
 
   getFunction<T extends ContractMethod = ContractMethod>(
@@ -89,11 +134,31 @@ export interface IUniswapV2Router extends BaseContract {
   ): T;
 
   getFunction(
+    nameOrSignature: "getAmountsIn"
+  ): TypedContractMethod<
+    [amountOut: BigNumberish, path: AddressLike[]],
+    [bigint[]],
+    "view"
+  >;
+  getFunction(
     nameOrSignature: "getAmountsOut"
   ): TypedContractMethod<
     [amountIn: BigNumberish, path: AddressLike[]],
     [bigint[]],
     "view"
+  >;
+  getFunction(
+    nameOrSignature: "swapExactTokensForTokens"
+  ): TypedContractMethod<
+    [
+      amountIn: BigNumberish,
+      amountOutMin: BigNumberish,
+      path: AddressLike[],
+      to: AddressLike,
+      deadline: BigNumberish
+    ],
+    [bigint[]],
+    "nonpayable"
   >;
 
   filters: {};

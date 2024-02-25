@@ -14,116 +14,170 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
-      name: "ArbitrageEstimator",
+      name: "IERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ArbitrageEstimator__factory>;
+    ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
-      name: "IAaveLendingPool",
+      name: "IUniswapV2Router02",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IAaveLendingPool__factory>;
+    ): Promise<Contracts.IUniswapV2Router02__factory>;
     getContractFactory(
-      name: "IUniswapV2Router",
+      name: "UniswapV2FlashSwap",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IUniswapV2Router__factory>;
+    ): Promise<Contracts.UniswapV2FlashSwap__factory>;
+    getContractFactory(
+      name: "IERC20",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20__factory>;
+    getContractFactory(
+      name: "IUniswapV2Factory",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IUniswapV2Factory__factory>;
+    getContractFactory(
+      name: "IUniswapV2Pair",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IUniswapV2Pair__factory>;
+    getContractFactory(
+      name: "IWETH",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IWETH__factory>;
     getContractFactory(
       name: "Lock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Lock__factory>;
     getContractFactory(
-      name: "MockAaveLendingPool",
+      name: "UniswapFlashSwapper",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.MockAaveLendingPool__factory>;
-    getContractFactory(
-      name: "MockUniswapRouter",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.MockUniswapRouter__factory>;
+    ): Promise<Contracts.UniswapFlashSwapper__factory>;
 
     getContractAt(
-      name: "ArbitrageEstimator",
+      name: "IERC20",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.ArbitrageEstimator>;
+    ): Promise<Contracts.IERC20>;
     getContractAt(
-      name: "IAaveLendingPool",
+      name: "IUniswapV2Router02",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.IAaveLendingPool>;
+    ): Promise<Contracts.IUniswapV2Router02>;
     getContractAt(
-      name: "IUniswapV2Router",
+      name: "UniswapV2FlashSwap",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.IUniswapV2Router>;
+    ): Promise<Contracts.UniswapV2FlashSwap>;
+    getContractAt(
+      name: "IERC20",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20>;
+    getContractAt(
+      name: "IUniswapV2Factory",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IUniswapV2Factory>;
+    getContractAt(
+      name: "IUniswapV2Pair",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IUniswapV2Pair>;
+    getContractAt(
+      name: "IWETH",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IWETH>;
     getContractAt(
       name: "Lock",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.Lock>;
     getContractAt(
-      name: "MockAaveLendingPool",
+      name: "UniswapFlashSwapper",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.MockAaveLendingPool>;
-    getContractAt(
-      name: "MockUniswapRouter",
-      address: string | ethers.Addressable,
-      signer?: ethers.Signer
-    ): Promise<Contracts.MockUniswapRouter>;
+    ): Promise<Contracts.UniswapFlashSwapper>;
 
     deployContract(
-      name: "ArbitrageEstimator",
+      name: "IERC20",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.ArbitrageEstimator>;
+    ): Promise<Contracts.IERC20>;
     deployContract(
-      name: "IAaveLendingPool",
+      name: "IUniswapV2Router02",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IAaveLendingPool>;
+    ): Promise<Contracts.IUniswapV2Router02>;
     deployContract(
-      name: "IUniswapV2Router",
+      name: "UniswapV2FlashSwap",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IUniswapV2Router>;
+    ): Promise<Contracts.UniswapV2FlashSwap>;
+    deployContract(
+      name: "IERC20",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20>;
+    deployContract(
+      name: "IUniswapV2Factory",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IUniswapV2Factory>;
+    deployContract(
+      name: "IUniswapV2Pair",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IUniswapV2Pair>;
+    deployContract(
+      name: "IWETH",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IWETH>;
     deployContract(
       name: "Lock",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Lock>;
     deployContract(
-      name: "MockAaveLendingPool",
+      name: "UniswapFlashSwapper",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.MockAaveLendingPool>;
-    deployContract(
-      name: "MockUniswapRouter",
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.MockUniswapRouter>;
+    ): Promise<Contracts.UniswapFlashSwapper>;
 
     deployContract(
-      name: "ArbitrageEstimator",
+      name: "IERC20",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.ArbitrageEstimator>;
+    ): Promise<Contracts.IERC20>;
     deployContract(
-      name: "IAaveLendingPool",
+      name: "IUniswapV2Router02",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IAaveLendingPool>;
+    ): Promise<Contracts.IUniswapV2Router02>;
     deployContract(
-      name: "IUniswapV2Router",
+      name: "UniswapV2FlashSwap",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IUniswapV2Router>;
+    ): Promise<Contracts.UniswapV2FlashSwap>;
+    deployContract(
+      name: "IERC20",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20>;
+    deployContract(
+      name: "IUniswapV2Factory",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IUniswapV2Factory>;
+    deployContract(
+      name: "IUniswapV2Pair",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IUniswapV2Pair>;
+    deployContract(
+      name: "IWETH",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IWETH>;
     deployContract(
       name: "Lock",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Lock>;
     deployContract(
-      name: "MockAaveLendingPool",
+      name: "UniswapFlashSwapper",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.MockAaveLendingPool>;
-    deployContract(
-      name: "MockUniswapRouter",
-      args: any[],
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.MockUniswapRouter>;
+    ): Promise<Contracts.UniswapFlashSwapper>;
 
     // default types
     getContractFactory(

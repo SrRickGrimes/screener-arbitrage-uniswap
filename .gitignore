@@ -30,3 +30,7 @@ go.work
 /Backend/Flashloan.Server/Flashloan.Server/bin/Debug/net8.0
 /Backend/Flashloan.Server/Flashloan.Server/obj
 /contracts/node_modules
+/contracts/artifacts
+/contracts/cache
+/Backend/Flashloan.Server/Flashloan.UniswapV2.Network.Ethereum/bin/Debug/net8.0
+/Backend/Flashloan.Server/Flashloan.UniswapV2.Network.Ethereum/obj

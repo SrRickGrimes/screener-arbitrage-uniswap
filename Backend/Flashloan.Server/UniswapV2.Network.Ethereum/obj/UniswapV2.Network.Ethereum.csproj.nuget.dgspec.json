@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj": {}
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj": {}
   },
   "projects": {
-    "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj": {
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj",
+        "projectUniqueName": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj",
         "projectName": "Flashloan.Application",
-        "projectPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj",
-        "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-        "outputPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\obj\\",
+        "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj",
+        "packagesPath": "C:\\Users\\ricar\\.nuget\\packages\\",
+        "outputPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ricar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
-                "projectPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj"
+              "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
+                "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj"
               }
             }
           }
@@ -38,11 +38,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -76,21 +71,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj",
+        "projectUniqueName": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj",
         "projectName": "Flashloan.Domain",
-        "projectPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj",
-        "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-        "outputPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\obj\\",
+        "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj",
+        "packagesPath": "C:\\Users\\ricar\\.nuget\\packages\\",
+        "outputPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ricar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -110,11 +105,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -154,21 +144,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj": {
+    "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj",
+        "projectUniqueName": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj",
         "projectName": "UniswapV2.Network.Ethereum",
-        "projectPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj",
-        "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-        "outputPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\obj\\",
+        "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\UniswapV2.Network.Ethereum.csproj",
+        "packagesPath": "C:\\Users\\ricar\\.nuget\\packages\\",
+        "outputPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\UniswapV2.Network.Ethereum\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ricar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -182,11 +172,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj": {
-                "projectPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj"
+              "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj": {
+                "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Application\\Flashloan.Application.csproj"
               },
-              "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
-                "projectPath": "E:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj"
+              "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj": {
+                "projectPath": "D:\\flash-loan-trader\\Backend\\Flashloan.Server\\Flashloan.Domain\\Flashloan.Domain.csproj"
               }
             }
           }
@@ -195,11 +185,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -235,7 +220,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
