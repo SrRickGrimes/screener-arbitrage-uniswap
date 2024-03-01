@@ -2,4 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { IAaveLendingPool } from "./IAaveLendingPool";
+export type { IERC20 } from "./IERC20";
+export type { IUniswapV2Factory } from "./IUniswapV2Factory";
+export type { IUniswapV2Pair } from "./IUniswapV2Pair";
 export type { IUniswapV2Router } from "./IUniswapV2Router";

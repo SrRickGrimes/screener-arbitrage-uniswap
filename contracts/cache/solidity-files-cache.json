@@ -1,129 +1,19 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "E:\\flash-loan-trader\\contracts\\contracts\\ArbitrageEstimator.sol": {
-      "lastModificationDate": 1708766166402,
-      "contentHash": "e48d6a1808398071d269d22ee4e2c0fb",
-      "sourceName": "contracts/ArbitrageEstimator.sol",
-      "solcConfig": {
-        "version": "0.8.24",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./interfaces/IUniswapV2Router.sol",
-        "./interfaces/IAaveLendingPool.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ArbitrageEstimator"
-      ]
-    },
-    "E:\\flash-loan-trader\\contracts\\contracts\\interfaces\\IUniswapV2Router.sol": {
-      "lastModificationDate": 1708761905787,
-      "contentHash": "31d703fe14c418f7f2f8b9c3ac2148a7",
-      "sourceName": "contracts/interfaces/IUniswapV2Router.sol",
-      "solcConfig": {
-        "version": "0.8.24",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IUniswapV2Router"
-      ]
-    },
-    "E:\\flash-loan-trader\\contracts\\contracts\\interfaces\\IAaveLendingPool.sol": {
-      "lastModificationDate": 1708761905787,
-      "contentHash": "e918405a82df0cfd577eb4d68805d0d3",
-      "sourceName": "contracts/interfaces/IAaveLendingPool.sol",
-      "solcConfig": {
-        "version": "0.8.24",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IAaveLendingPool"
-      ]
-    },
-    "E:\\flash-loan-trader\\contracts\\contracts\\Lock.sol": {
-      "lastModificationDate": 1708761905787,
-      "contentHash": "ce4a7cc2127b2615ebfb28472322ae97",
+    "D:\\flash-loan-trader\\contracts\\contracts\\Lock.sol": {
+      "lastModificationDate": 1708703307071,
+      "contentHash": "dacf0d5cb5b45dc83086de5bc1c26c2c",
       "sourceName": "contracts/Lock.sol",
       "solcConfig": {
         "version": "0.8.24",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -148,18 +38,19 @@
         "Lock"
       ]
     },
-    "E:\\flash-loan-trader\\contracts\\contracts\\MockAaveLendingPool.sol": {
-      "lastModificationDate": 1708761905787,
-      "contentHash": "deee35b4895067ce38d533788208ff86",
-      "sourceName": "contracts/MockAaveLendingPool.sol",
+    "D:\\flash-loan-trader\\contracts\\contracts\\contracts\\UniswapV2Interfaces.sol": {
+      "lastModificationDate": 1708781546459,
+      "contentHash": "b6fcc7e54ff7c822c1c83b676e8d15ff",
+      "sourceName": "contracts/contracts/UniswapV2Interfaces.sol",
       "solcConfig": {
         "version": "0.8.24",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -178,24 +69,67 @@
       },
       "imports": [],
       "versionPragmas": [
-        "^0.8.0"
+        "^0.8.24"
       ],
       "artifacts": [
-        "MockAaveLendingPool"
+        "IERC20",
+        "IUniswapV2Factory",
+        "IUniswapV2Pair",
+        "IWETH"
       ]
     },
-    "E:\\flash-loan-trader\\contracts\\contracts\\MockUniswapRouter.sol": {
-      "lastModificationDate": 1708761905787,
-      "contentHash": "8d554a090038116eea56a36262283ac0",
-      "sourceName": "contracts/MockUniswapRouter.sol",
+    "D:\\flash-loan-trader\\contracts\\contracts\\UniswapFlashSwapper.sol": {
+      "lastModificationDate": 1708782185551,
+      "contentHash": "870ea4ed95b40b42ecb958e7a6e2192e",
+      "sourceName": "contracts/UniswapFlashSwapper.sol",
       "solcConfig": {
         "version": "0.8.24",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./contracts/UniswapV2Interfaces.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "UniswapFlashSwapper"
+      ]
+    },
+    "D:\\flash-loan-trader\\contracts\\contracts\\contracts\\Flashloan.sol": {
+      "lastModificationDate": 1708782858957,
+      "contentHash": "216429e044e9f98e2ab2d6456203eefa",
+      "sourceName": "contracts/contracts/Flashloan.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -217,7 +151,9 @@
         "^0.8.0"
       ],
       "artifacts": [
-        "MockUniswapRouter"
+        "IERC20",
+        "IUniswapV2Router02",
+        "UniswapV2FlashSwap"
       ]
     }
   }
