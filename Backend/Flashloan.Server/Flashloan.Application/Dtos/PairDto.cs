@@ -12,6 +12,9 @@ namespace Flashloan.Application.Dtos
 
         [Id(2)]
         public List<(DexDto DexA, DexDto DexB, decimal gapPercentage)> Dexes { get; set; } = [];
+
+        [Id(3)]
+        public required string ChainName { get; set; }
     }
 
     [GenerateSerializer]

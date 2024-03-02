@@ -57,7 +57,7 @@ namespace UniswapV2.Network.BinanceSmartChain
             services.AddTransient<IChainNetworkMetadataProvider, ChainNetworkMetadataProvider>();
 
             services.AddKeyedSingleton<IScreenerProvider, ScreenerProvider>(IUniswapV2.Name);
-            // services.AddSingleton<IScreenerProvider, ScreenerProvider>();
+            services.AddSingleton(s => s.GetRequiredKeyedService<IScreenerProvider>(IUniswapV2.Name));
 
             services.AddSingleton<IWeb3Service>(s =>
             {

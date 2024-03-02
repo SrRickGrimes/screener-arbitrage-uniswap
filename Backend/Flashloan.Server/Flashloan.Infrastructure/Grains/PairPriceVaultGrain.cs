@@ -141,7 +141,8 @@ namespace Flashloan.Infrastructure.Grains
             {
                 ContractAddress = symbolInfo.ContractAddress,
                 Symbol = symbolInfo.Symbol,
-                Dexes = dexes
+                Dexes = dexes,
+                ChainName = chainMetadataProvider.Name,
             });
         }
     }

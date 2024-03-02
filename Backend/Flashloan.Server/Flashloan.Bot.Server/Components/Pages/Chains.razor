@@ -1,0 +1,37 @@
+﻿@page "/chains"
+@using MudBlazor
+@rendermode InteractiveServer
+
+<PageTitle>Chains</PageTitle>
+
+<div style="padding: 20px;">
+    <MudGrid Spacing="2">
+        @foreach (var pair in Pairs)
+        {
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudCard Style="margin: 8px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                    <MudCardHeader>
+                        <MudText Typo="Typo.h5">@pair.Symbol</MudText>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        @foreach (var dexInfo in pair.Gaps)
+                        {
+                            <div style="margin-bottom: 16px;">
+                                <MudText Typo="Typo.body1"><b>@dexInfo.DexA.DexName</b> y <b>@dexInfo.DexB.DexName</b></MudText>
+                                @if (dexInfo.GapPercentage >= 1)
+                                {
+                                    <MudText Typo="Typo.subtitle1" Color="Color.Success">Gap: @dexInfo.GapPercentage.ToString("N10")%</MudText>
+
+                                }
+                                else
+                                {
+                                    <MudText Typo="Typo.subtitle1" Color="Color.Secondary">Gap: @dexInfo.GapPercentage.ToString("N10")%</MudText>
+                                }
+                            </div>
+                        }
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        }
+    </MudGrid>
+</div>
