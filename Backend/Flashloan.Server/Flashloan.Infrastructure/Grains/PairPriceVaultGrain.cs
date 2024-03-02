@@ -74,7 +74,7 @@ namespace Flashloan.Infrastructure.Grains
                 _logger.LogInformation("No hay suficientes DEX para calcular el gap.");
                 return;
             }
-            var tasks= new List<Task>();
+            var tasks = new List<Task>();
             var symbolInfo = chainMetadataProvider.GetConfiguration().Pairs.First(x => x.Symbol == pairPriceVaultId.Symbol);
             var dexes = new List<(DexDto DexA, DexDto DexB, decimal gapPercentage)>();
             for (int i = 0; i < prices.Count; i++)
@@ -83,7 +83,7 @@ namespace Flashloan.Infrastructure.Grains
                 {
                     int indexI = i, indexJ = j;
 
-                    tasks.Add(Task.Run(async () => 
+                    tasks.Add(Task.Run(async () =>
                     {
                         var price1 = prices[indexI];
                         var price2 = prices[indexJ];
@@ -132,9 +132,10 @@ namespace Flashloan.Infrastructure.Grains
                             gapPercentage
                             ));
                     }));
-                   
+
                 }
             }
+            await Task.WhenAll(tasks);
 
             await screener.UpdatePriceAsync(new PairDto
             {

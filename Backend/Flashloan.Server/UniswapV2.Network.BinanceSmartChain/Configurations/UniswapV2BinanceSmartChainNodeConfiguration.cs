@@ -1,9 +1,9 @@
 ﻿
 using Flashloan.Domain.Models;
 
-namespace UniswapV2.Network.Ethereum.Configuration
+namespace UniswapV2.Network.BinanceSmartChain.Configuration
 {
-    public class UniswapV2EthereumNodeConfiguration
+    public class UniswapV2BinanceSmartChainNodeConfiguration
     {
         public required string RpcUrl { get; set; }
         public required string WebSocketUrl { get; set; }
@@ -16,6 +16,4 @@ namespace UniswapV2.Network.Ethereum.Configuration
 
         public decimal TradeAmountEth { get; } = 0.1m;
     }
-
-
 }

@@ -1,30 +1,38 @@
-﻿using Flashloan.Domain.Interfaces;
+﻿using Flashloan.Domain.Configuration;
+using Flashloan.Domain.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Nethereum.JsonRpc.WebSocketStreamingClient;
 using Nethereum.RPC.Reactive.Eth.Subscriptions;
 using Newtonsoft.Json;
 using System.Reactive.Subjects;
-using UniswapV2.Network.Ethereum.Configuration;
 
-namespace UniswapV2.Network.Ethereum.Providers
+namespace UniswapV2.Network.Core.Services
 {
-    internal class StreamProvider: IChainNetworkStreamProvider
+    public class DefaultStreamProvider : IChainNetworkStreamProvider
     {
-        public StreamProvider(ILogger<StreamProvider> logger, IOptions<UniswapV2EthereumNodeConfiguration> options)
+        private readonly IChainNetworkMetadataProvider _chainNetworkMetadataProvider;
+        private readonly GeneralConfiguration _generalConfiguration;
+        private readonly Subject<string> _stream = new();
+        private readonly ILogger<DefaultStreamProvider> _logger;
+        private readonly string _name = "";
+
+
+        public DefaultStreamProvider(string chainName, ILogger<DefaultStreamProvider> logger,
+         IServiceProvider serviceProvider)
         {
             _logger = logger;
-            _options = options;
+            _chainNetworkMetadataProvider = serviceProvider.GetRequiredKeyedService<IChainNetworkMetadataProvider>(chainName);
+            _generalConfiguration = _chainNetworkMetadataProvider.GetConfiguration();
+            _name = chainName;
         }
-        public string Name => IUniswapV2.Name;
 
-        private readonly Subject<string> _stream = new();
-        private readonly ILogger<StreamProvider> _logger;
-        private readonly IOptions<UniswapV2EthereumNodeConfiguration> _options;
+        public string Name => _name;
+
 
         public async Task<IObservable<string>> GetStream()
         {
-            var client = new StreamingWebSocketClient(_options.Value.WebSocketUrl);
+            var client = new StreamingWebSocketClient(_generalConfiguration.WebSocketUrl);
             // create the subscription
             // (it won't start receiving data until Subscribe is called)
             var subscription = new EthNewBlockHeadersObservableSubscription(client);
@@ -41,10 +49,10 @@ namespace UniswapV2.Network.Ethereum.Providers
             // put your logic here
             subscription.GetSubscriptionDataResponsesAsObservable().Subscribe(block =>
             {
-                secondsSinceLastBlock = (lastBlockNotification == null) ? 0 : (int)DateTime.Now.Subtract(lastBlockNotification.Value).TotalSeconds;
+                secondsSinceLastBlock = lastBlockNotification == null ? 0 : (int)DateTime.Now.Subtract(lastBlockNotification.Value).TotalSeconds;
                 lastBlockNotification = DateTime.Now;
                 var utcTimestamp = DateTimeOffset.FromUnixTimeSeconds((long)block.Timestamp.Value);
-                _logger.LogInformation("New Block. Number: {Number}, Timestamp UTC: {UtcTimestamp}, Seconds since last block received: {SecondsSinceLastBlock}", block.Number.Value, JsonConvert.SerializeObject(utcTimestamp), secondsSinceLastBlock);
+                _logger.LogInformation("New Block. Number: {Number} for chain {Chain}", block.Number, Name);
                 _stream.OnNext($"New Block. Number: {block.Number.Value}, Timestamp UTC: {JsonConvert.SerializeObject(utcTimestamp)}, Seconds since last block received: {secondsSinceLastBlock} ");
             });
 

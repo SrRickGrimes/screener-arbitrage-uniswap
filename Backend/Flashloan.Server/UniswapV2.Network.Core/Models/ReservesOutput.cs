@@ -1,7 +1,7 @@
 ﻿using Nethereum.ABI.FunctionEncoding.Attributes;
 using System.Numerics;
 
-namespace UniswapV2.Network.Ethereum.Models
+namespace UniswapV2.Network.Core.Models
 {
     [FunctionOutput]
     public class ReservesOutput

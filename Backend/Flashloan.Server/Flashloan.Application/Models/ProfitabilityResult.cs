@@ -6,11 +6,11 @@ namespace Flashloan.Application.Models
     public class ProfitabilityResult
     {
         [Id(0)]
-   
-       public decimal EstimatedGasCost {  get; set; }
+
+        public decimal EstimatedGasCost { get; set; }
 
         [Id(1)]
-        public decimal AmountOutA {  get; set; }
+        public decimal AmountOutA { get; set; }
 
         [Id(2)]
         public decimal AmountOutB { get; set; }
@@ -19,6 +19,6 @@ namespace Flashloan.Application.Models
         public decimal PotentialProfit { get; set; }
 
         [Id(4)]
-        public decimal ProfitabilityPercentage {  get; set; }    
+        public decimal ProfitabilityPercentage { get; set; }
     }
 }

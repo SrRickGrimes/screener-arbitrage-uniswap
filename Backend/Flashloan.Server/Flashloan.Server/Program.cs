@@ -4,6 +4,7 @@ using Flashloan.Infrastructure;
 using Flashloan.Server.Backgrounds;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
+using UniswapV2.Network.BinanceSmartChain;
 using UniswapV2.Network.Ethereum;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -12,6 +13,7 @@ builder.Services.AddDomain(builder.Configuration);
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddUniswapV2Ethereum(builder.Configuration);
+builder.Services.AddUniswapV2BinanceSmartChain(builder.Configuration);
 
 builder.Host.UseOrleans(siloBuilder =>
 {

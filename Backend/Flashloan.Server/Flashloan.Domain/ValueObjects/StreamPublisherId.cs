@@ -1,6 +1,6 @@
 ﻿namespace Flashloan.Domain.ValueObjects
 {
-    public readonly struct StreamPublisherId(string key,string exchangeName, string streamProviderName)
+    public readonly struct StreamPublisherId(string key, string exchangeName, string streamProviderName)
     {
         public string Key { get; } = key;
         public string ExchangeName { get; } = exchangeName;

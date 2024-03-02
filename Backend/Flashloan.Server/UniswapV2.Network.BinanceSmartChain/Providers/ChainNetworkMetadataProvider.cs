@@ -1,11 +1,11 @@
 ﻿using Flashloan.Domain.Configuration;
 using Flashloan.Domain.Interfaces;
 using Microsoft.Extensions.Options;
-using UniswapV2.Network.Ethereum.Configuration;
+using UniswapV2.Network.BinanceSmartChain.Configuration;
 
-namespace UniswapV2.Network.Ethereum.Providers
+namespace UniswapV2.Network.BinanceSmartChain.Providers
 {
-    internal class ChainNetworkMetadataProvider(IOptions<UniswapV2EthereumNodeConfiguration> options) : IChainNetworkMetadataProvider
+    internal class ChainNetworkMetadataProvider(IOptions<UniswapV2BinanceSmartChainNodeConfiguration> options) : IChainNetworkMetadataProvider
     {
         private readonly string _name = IUniswapV2.Name;
 

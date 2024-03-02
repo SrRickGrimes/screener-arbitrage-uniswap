@@ -2,11 +2,6 @@
 using Flashloan.Domain.Interfaces;
 using Flashloan.Domain.ValueObjects;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Nethereum.JsonRpc.WebSocketStreamingClient;
-using Nethereum.RPC.Reactive.Eth.Subscriptions;
-using Newtonsoft.Json;
 using Orleans;
 using Orleans.Streams;
 
@@ -37,7 +32,7 @@ namespace Flashloan.Infrastructure.Grains
             var provider = serviceProvider.GetRequiredKeyedService<IChainNetworkStreamProvider>(streamProducerId.Key);
 
 
-            var chainStream =await provider.GetStream();
+            var chainStream = await provider.GetStream();
             chainStream.Subscribe(async block =>
             {
                 await stream.OnNextAsync($"{streamProducerId.Key} : {block}");

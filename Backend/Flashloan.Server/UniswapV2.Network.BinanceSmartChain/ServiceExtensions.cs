@@ -3,16 +3,16 @@ using Flashloan.Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using UniswapV2.Network.BinanceSmartChain.Configuration;
+using UniswapV2.Network.BinanceSmartChain.Providers;
 using UniswapV2.Network.Core.Interfaces;
 using UniswapV2.Network.Core.Services;
-using UniswapV2.Network.Ethereum.Configuration;
-using UniswapV2.Network.Ethereum.Providers;
 
-namespace UniswapV2.Network.Ethereum
+namespace UniswapV2.Network.BinanceSmartChain
 {
     public static class ServiceExtensions
     {
-        public static IServiceCollection AddUniswapV2Ethereum(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddUniswapV2BinanceSmartChain(this IServiceCollection services, IConfiguration configuration)
         {
             // Stream Provider
             services.AddKeyedTransient<IChainNetworkStreamProvider>(IUniswapV2.Name, (s, o) =>
@@ -64,8 +64,8 @@ namespace UniswapV2.Network.Ethereum
                 var web3Service = new DefaultWeb3Service(IUniswapV2.Name, s.GetRequiredService<IServiceProvider>());
                 return web3Service;
             });
-            var section = configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration));
-            services.Configure<UniswapV2EthereumNodeConfiguration>(configuration.GetSection(nameof(UniswapV2EthereumNodeConfiguration)));
+            var section = configuration.GetSection(nameof(UniswapV2BinanceSmartChainNodeConfiguration));
+            services.Configure<UniswapV2BinanceSmartChainNodeConfiguration>(configuration.GetSection(nameof(UniswapV2BinanceSmartChainNodeConfiguration)));
 
             return services;
         }

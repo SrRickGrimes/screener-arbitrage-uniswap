@@ -1,6 +1,6 @@
 ﻿namespace Flashloan.Domain.ValueObjects
 {
-    public struct PairPriceVaultId(string Key,string Symbol)
+    public struct PairPriceVaultId(string Key, string Symbol)
     {
         public string Key { get; } = Key;
         public string Symbol { get; } = Symbol;

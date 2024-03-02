@@ -1,7 +1,7 @@
 ﻿using Flashloan.Application.Interfaces;
 using Flashloan.Application.Models;
 
-namespace UniswapV2.Network.Ethereum.Providers
+namespace UniswapV2.Network.BinanceSmartChain.Providers
 {
     internal class OracleProvider : IOracleProvider
     {

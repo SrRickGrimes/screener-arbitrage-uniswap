@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nethereum.JsonRpc.WebSocketClient" Version="4.19.0" />
-    <PackageReference Include="Nethereum.Parity.Reactive" Version="4.19.0" />
-    <PackageReference Include="Nethereum.RPC.Reactive" Version="4.19.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Flashloan.Application\Flashloan.Application.csproj" />
     <ProjectReference Include="..\Flashloan.Domain\Flashloan.Domain.csproj" />
     <ProjectReference Include="..\UniswapV2.Network.Core\UniswapV2.Network.Core.csproj" />

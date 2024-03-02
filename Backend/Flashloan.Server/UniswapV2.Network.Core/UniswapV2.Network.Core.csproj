@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Nethereum.JsonRpc.WebSocketClient" Version="4.19.0" />
+		<PackageReference Include="Nethereum.Parity.Reactive" Version="4.19.0" />
+		<PackageReference Include="Nethereum.RPC.Reactive" Version="4.19.0" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Flashloan.Domain\Flashloan.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

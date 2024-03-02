@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Flashloan.Domain.Configuration;
 
 namespace Flashloan.Domain.Interfaces
 {
-    public interface IChainNetworkMetadataProvider:IChainNetwork
+    public interface IChainNetworkMetadataProvider : IChainNetwork
     {
         GeneralConfiguration GetConfiguration();
 

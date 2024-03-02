@@ -3,7 +3,7 @@ using Flashloan.Application.Interfaces;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 
-namespace UniswapV2.Network.Ethereum.Providers
+namespace UniswapV2.Network.BinanceSmartChain.Providers
 {
     internal class ScreenerProvider : IScreenerProvider
     {

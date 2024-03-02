@@ -1,11 +1,7 @@
-﻿using Flashloan.Application.Grains;
-using Flashloan.Application.Interfaces;
+﻿using Flashloan.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
-using System.Threading.Tasks;
 using System.Threading.Channels;
-using Microsoft.AspNetCore.Http;
 
 namespace Flashloan.Server.Controllers
 {

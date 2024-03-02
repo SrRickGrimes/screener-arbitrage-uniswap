@@ -4,12 +4,12 @@ using Flashloan.Domain.ValueObjects;
 
 namespace Flashloan.Server.Backgrounds
 {
-    public class StreamBackground(IGrainFactory grainFactory,  IServiceProvider serviceProvider) : BackgroundService
+    public class StreamBackground(IGrainFactory grainFactory, IServiceProvider serviceProvider) : BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             await Task.Delay(5000);
-            var providers= serviceProvider.GetServices<IChainNetworkStreamProvider>();
+            var providers = serviceProvider.GetServices<IChainNetworkStreamProvider>();
             foreach (var streamProvider in providers)
             {
                 var streamProducer = grainFactory.GetGrain<IStreamProviderGrain>(new StreamProducerId(streamProvider.Name, "RouterSwap", "StreamProvider").ToString());
@@ -24,7 +24,7 @@ namespace Flashloan.Server.Backgrounds
                     }
                 }
             }
-           
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Flashloan.Domain.ValueObjects
 {
-    public struct ScreenerStreamProducerId(string key ,string streamProviderName)
+    public struct ScreenerStreamProducerId(string key, string streamProviderName)
     {
         public string Key { get; } = key;
         public string StreamProviderName { get; } = streamProviderName;

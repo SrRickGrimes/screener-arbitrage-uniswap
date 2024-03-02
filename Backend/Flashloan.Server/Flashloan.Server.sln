@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flashloan.Domain", "Flashlo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniswapV2.Network.Ethereum", "UniswapV2.Network.Ethereum\UniswapV2.Network.Ethereum.csproj", "{0B11E7BA-4A3E-483F-833C-336297B22788}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniswapV2.Network.Core", "UniswapV2.Network.Core\UniswapV2.Network.Core.csproj", "{DDBCCB8C-325D-46D1-8C06-BA8C9AC1BB79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniswapV2.Network.BinanceSmartChain", "UniswapV2.Network.BinanceSmartChain\UniswapV2.Network.BinanceSmartChain.csproj", "{FD4F2D76-6B4A-43A9-945B-D00DBC438E23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{0B11E7BA-4A3E-483F-833C-336297B22788}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B11E7BA-4A3E-483F-833C-336297B22788}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B11E7BA-4A3E-483F-833C-336297B22788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDBCCB8C-325D-46D1-8C06-BA8C9AC1BB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBCCB8C-325D-46D1-8C06-BA8C9AC1BB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBCCB8C-325D-46D1-8C06-BA8C9AC1BB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBCCB8C-325D-46D1-8C06-BA8C9AC1BB79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD4F2D76-6B4A-43A9-945B-D00DBC438E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4F2D76-6B4A-43A9-945B-D00DBC438E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4F2D76-6B4A-43A9-945B-D00DBC438E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4F2D76-6B4A-43A9-945B-D00DBC438E23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

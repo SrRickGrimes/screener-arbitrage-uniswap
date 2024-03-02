@@ -3,5 +3,6 @@
     public interface IChainNetwork
     {
         string Name { get; }
+
     }
 }

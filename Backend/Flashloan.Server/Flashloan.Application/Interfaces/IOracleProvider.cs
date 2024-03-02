@@ -3,7 +3,7 @@ using Flashloan.Domain.Interfaces;
 
 namespace Flashloan.Application.Interfaces
 {
-    public interface IOracleProvider:IChainNetwork
+    public interface IOracleProvider : IChainNetwork
     {
         public Task<ProfitabilityResult> GetProfitabilityAsync(string symbol,
            string routerA,

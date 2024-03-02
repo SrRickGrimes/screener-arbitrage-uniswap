@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Flashloan.Infrastructure\Flashloan.Infrastructure.csproj" />
+    <ProjectReference Include="..\UniswapV2.Network.BinanceSmartChain\UniswapV2.Network.BinanceSmartChain.csproj" />
     <ProjectReference Include="..\UniswapV2.Network.Ethereum\UniswapV2.Network.Ethereum.csproj" />
   </ItemGroup>
 
