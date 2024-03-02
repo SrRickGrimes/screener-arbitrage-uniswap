@@ -60,3 +60,8 @@ go.work
 /Backend/Flashloan.Server/UniswapV2.Network.Polygon/bin/Debug/net8.0
 /Backend/Flashloan.Server/UniswapV2.Network.BinanceSmartChain/obj
 /Backend/Flashloan.Server/UniswapV2.Network.BinanceSmartChain/bin/Debug/net8.0
+/Backend/Flashloan.Server/Flashloan.Bot.Server/bin/Debug/net8.0
+/Backend/Flashloan.Server/Flashloan.Bot.Server/obj/Debug/net8.0/staticwebassets
+/Backend/Flashloan.Server/Flashloan.Bot.Server/obj
+/.vs/flash-loan-trader/v17/.wsuo
+/.vs/flash-loan-trader/v17/DocumentLayout.json
