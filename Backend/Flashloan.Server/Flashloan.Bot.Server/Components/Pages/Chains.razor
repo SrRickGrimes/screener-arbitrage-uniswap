@@ -20,12 +20,12 @@
                                 <MudText Typo="Typo.body1"><b>@dexInfo.DexA.DexName</b> y <b>@dexInfo.DexB.DexName</b></MudText>
                                 @if (dexInfo.GapPercentage >= 1)
                                 {
-                                    <MudText Typo="Typo.subtitle1" Color="Color.Success">Gap: @dexInfo.GapPercentage.ToString("N10")%</MudText>
+                                    <MudText Typo="Typo.subtitle1" Color="Color.Success">Gap: @dexInfo.GapPercentage.ToString("N30")%</MudText>
 
                                 }
                                 else
                                 {
-                                    <MudText Typo="Typo.subtitle1" Color="Color.Secondary">Gap: @dexInfo.GapPercentage.ToString("N10")%</MudText>
+                                    <MudText Typo="Typo.subtitle1" Color="Color.Secondary">Gap: @dexInfo.GapPercentage.ToString("N30")%</MudText>
                                 }
                             </div>
                         }

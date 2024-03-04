@@ -14,6 +14,7 @@ namespace Flashloan.Bot.Server.Components.Pages
 
         public SymbolGroup? SelectedSymbol { get; set; }
 
+        private readonly object _lockObject = new();
         public ObservableCollection<PairInfo> Pairs { get; set; } = [];
 
         protected override Task OnAfterRenderAsync(bool firstRender)
@@ -27,29 +28,35 @@ namespace Flashloan.Bot.Server.Components.Pages
                         provider.GetStream()
                             .Subscribe(pair =>
                             {
+
                                 if (pair == null)
                                 {
                                     return;
                                 }
                                 var pairInfo = PairInfoMapper.Map(pair);
-                                if (Pairs.FirstOrDefault(x => x != null && x.Symbol == pairInfo.Symbol && pairInfo.ChainName == pairInfo.ChainName) is PairInfo existingPair)
+                                lock (_lockObject)
                                 {
-                                    foreach (var dex in pairInfo.Gaps)
+                                    if (Pairs.FirstOrDefault(x => x != null && x.Symbol == pairInfo.Symbol && pairInfo.ChainName == pairInfo.ChainName) is PairInfo existingPair)
                                     {
-                                        if (existingPair.Gaps.FirstOrDefault(x => x.DexA.DexName == dex.DexA.DexName && x.DexB.DexName == dex.DexB.DexName) is GapInfo gapInfo)
+                                        foreach (var dex in pairInfo.Gaps)
                                         {
-                                            gapInfo.GapPercentage = dex.GapPercentage;
-                                        }
-                                        else
-                                        {
-                                            existingPair.Gaps.Add(dex);
+                                            if (existingPair.Gaps.FirstOrDefault(x => x.DexA.DexName == dex.DexA.DexName && x.DexB.DexName == dex.DexB.DexName) is GapInfo gapInfo)
+                                            {
+                                                gapInfo.GapPercentage = dex.GapPercentage;
+                                            }
+                                            else
+                                            {
+                                                existingPair.Gaps.Add(dex);
+                                            }
                                         }
                                     }
+                                    else
+                                    {
+                                        Pairs.Add(pairInfo);
+                                    }
                                 }
-                                else
-                                {
-                                    Pairs.Add(pairInfo);
-                                }
+
+
                                 InvokeAsync(StateHasChanged);
                             });
                     }
