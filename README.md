@@ -13,3 +13,4 @@ NET 8
 SQL Server 
 ASP.NET Core
 Nethereum
+Blazor Server
