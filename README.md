@@ -8,9 +8,9 @@ There are numerous examples of how to use flash loans, but I have not encountere
 
 Stack used:
 
-Microsoft Orleans
-NET 8
-SQL Server 
-ASP.NET Core
-Nethereum
-Blazor Server
+ - Microsoft Orleans
+ -  NET 8 
+ - SQL Server  
+ - ASP.NET Core
+ -  Nethereum
+ - Blazor Server
