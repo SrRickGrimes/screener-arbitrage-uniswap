@@ -17,4 +17,6 @@ Stack used:
  - Hardhat
  - Solidity
 
+Notes: I added a basic example how to create a flash loan using solidity but it is not implemented in the backend. 
+
 ![image](https://github.com/SrRickGrimes/screener-arbitrage-uniswap/assets/81363560/c371ca19-bfed-4d82-84b7-0c1ef0f3e695)
