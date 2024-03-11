@@ -14,5 +14,7 @@ Stack used:
  - ASP.NET Core
  -  Nethereum
  - Blazor Server
+ - Hardhat
+ - Solidity
 
 ![image](https://github.com/SrRickGrimes/screener-arbitrage-uniswap/assets/81363560/c371ca19-bfed-4d82-84b7-0c1ef0f3e695)
